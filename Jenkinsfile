@@ -1,10 +1,16 @@
-  pipeline {
-    agent none
+ pipeline {
+    agent any
     tools {
-        maven 'local maven' 
+        maven "local maven"
     }
-    stage('Checkout') {
-      steps {
-        git url: 'https://github.com/samuelkawuldim/jenkinsclass.git',
-          credentialsId: 'TT',
-            branch 'main'
+    stages {
+        stage('Checkout') {
+            steps {
+                // Get some code from a GitHub repository
+                git url: 'https://github.com/samuelkawuldim/jenkinsclass.git', 
+                    branch: 'main',
+                    credentialsId: '56fb3b0a-9bf9-4ea5-9187-61a35c3ea15a'
+            }
+        }
+    }
+}
